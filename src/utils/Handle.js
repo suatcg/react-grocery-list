@@ -6,7 +6,6 @@ export default function onHandleClick(handle, progressBar, slider) {
 	const progressBarItemCount = progressBar.children.length;
 
 	if (handle.classList.contains('left-handle')) {
-		debugger;
 		if (sliderIndex - 1 < 0) {
 			slider.style.setProperty('--slider-index', progressBarItemCount - 1);
 			progressBar.children[sliderIndex].classList.remove('active');

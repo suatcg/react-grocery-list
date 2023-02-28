@@ -36,7 +36,7 @@
 	border-radius: 0.7rem;
 	flex-grow: 0;
 	flex-shrink: 0;
-	background-color: rgba(0, 0, 0, 0.25);
+	background-color: rgb(42, 167, 119);
 	z-index: 1000;
 	margin: var(--img-gap) 0;
 	width: var(--handle-size);
@@ -63,7 +63,7 @@
 
 .handle:hover,
 .handle:focus {
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgb(17, 70, 49);
 }
 
 .text {
@@ -78,7 +78,7 @@
 .header {
 	display: flex;
 	justify-content: space-between;
-	padding: 0.5rem calc(var(--img-gap) * 2 + var(--ha));
+	padding: 0.5rem calc(var(--img-gap) * 2 + var(--handle-size));
 }
 
 .title {
@@ -102,7 +102,7 @@
 	background-color: #777777e7;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 100px) {
 	.slider {
 		--items-per-screen: 3;
 	}

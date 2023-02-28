@@ -4,16 +4,19 @@ import ErrorBoundary from './ErrorBoundary';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
+import { WindowContextProvider } from '../context/WindowContextProvider';
 
 const App = () => {
 	return (
-		<ErrorBoundary>
-			<div className="App">
-				<Header />
-				<Content />
-				<Footer />
-			</div>
-		</ErrorBoundary>
+		<WindowContextProvider>
+			<ErrorBoundary>
+				<div className="App">
+					<Header />
+					<Content />
+					<Footer />
+				</div>
+			</ErrorBoundary>
+		</WindowContextProvider>
 	);
 };
 
