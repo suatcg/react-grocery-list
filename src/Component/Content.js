@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Categories from './Categories';
 import Products from './Products';
@@ -21,19 +21,39 @@ const Content = () => {
 			item: 'Item 3',
 		},
 	]);
-	return (
-		<main>
-			<Categories />
-			<Products />
+
+	const lists = useMemo(
+		() => (
 			<ul>
 				{items.map((item) => (
 					<li className="item" key={item.id}>
-						<input type="checkbox" checked={item.checked} />
+						<input
+							type="checkbox"
+							onChange={() => handleClick(item.id)}
+							checked={item.checked}
+						/>
 						<label>{item.item}</label>
 						<FaTrashAlt role="button" tabIndex="0" />
 					</li>
 				))}
 			</ul>
+		),
+		[items]
+	);
+
+	const handleClick = (id) => {
+		const listItems = items.map((item) => {
+			return item.id === id ? { ...item, checked: !item.checked } : item;
+		});
+
+		setitems(listItems);
+	};
+
+	return (
+		<main>
+			<Categories />
+			<Products />
+			{lists}
 		</main>
 	);
 };

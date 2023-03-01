@@ -96,10 +96,17 @@
 	min-width: 1.5rem;
 	height: 0.5rem;
 	background-color: #77777777;
+	transition: all 0.3s ease-in-out;
+}
+
+.progress-item:hover {
+	box-shadow: 0 5px 10px rgb(0 0 0 / 0.4);
+	background-color: rgb(17, 70, 49);
 }
 
 .progress-item.active {
 	background-color: #777777e7;
+	background-color: rgb(17, 70, 49);
 }
 
 @media (max-width: 100px) {
@@ -108,7 +115,7 @@
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 760px) {
 	.slider {
 		--items-per-screen: 2;
 	}

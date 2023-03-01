@@ -5,67 +5,25 @@ import calculateProgressBar from '../utils/ProgressBarCalc';
 import throttle from '../utils/throttle';
 
 const Products = () => {
-	// const [width, setWidth] = useState(0);
-
-	// useEffect(() => {
-	// 	() =>
-	// 		document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
-	// 	return;
-	// }, []);
-
 	useEffect(() => {
 		document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
 	}, []);
 
-	// useEffect(() => {
-	// 	let timeout;
-	// 	const handleResize = () => {
-	// 		clearTimeout(timeout);
+	useLayoutEffect(() => {
+		function handleResize() {
+			document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
+		}
+		// Attach the event listener to the window object
+		window.addEventListener('resize', handleResize);
 
-	// 		document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
+		// setTimeout(() => handleResize(), 250);
+		handleResize();
 
-	// 		timeout = setTimeout(() => {
-	// 			return;
-	// 		}, 250);
-	// 	};
-	// 	window.addEventListener('resize', handleResize);
-
-	// 	return () => window.removeEventListener('resize', handleResize);
-	// }, []);
-
-	// function resizeThrottle() {
-	// 	document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
-	// }
-
-	// useLayoutEffect(() => {
-	// 	window.addEventListener('resize', resizeThrottle);
-	// 	return () => {
-	// 		window.removeEventListener('resize', resizeThrottle);
-	// 	};
-	// }, []);
-
-	// function handleResize() {
-	// 	// Update the state or perform any other actions when the
-	// 	// browser is resized
-
-	// 	document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
-	// }
-	// useEffect(() => {
-	// 	// Attach the event listener to the window object
-	// 	window.addEventListener('resize', handleResize);
-
-	// 	// Remove the event listener when the component unmounts
-	// 	return () => {
-	// 		window.removeEventListener('resize', handleResize);
-	// 	};
-	// }, []);
-
-	// useLayoutEffect(() => {
-	// 	throttle(() => {
-	// 		document.querySelectorAll('.progress-bar').forEach(calculateProgressBar),
-	// 			250;
-	// 	});
-	// }, []);
+		// Remove the event listener when the component unmounts
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 
 	const handleClick = useCallback((...args) => {
 		const [handle, progressBar, slider] = args;
@@ -90,12 +48,31 @@ const Products = () => {
 		}
 	};
 
+	const progressClick = (actualBar, index = 0) => {
+		document.querySelectorAll('.progress-item').forEach((barItem, idx) => {
+			if (barItem.isSameNode(actualBar)) {
+				index = idx;
+			}
+			if (barItem.classList.contains('active')) {
+				barItem.classList.remove('active');
+			}
+		});
+		actualBar.classList.add('active');
+
+		const slider = actualBar.closest('.row').querySelector('.slider');
+
+		slider.style.setProperty('--slider-index', index);
+	};
+
 	return (
 		<div className="product-container">
 			<div className="row">
 				<div className="header">
 					<h3 className="title">Bakery</h3>
-					<div className="progress-bar"></div>
+					<div
+						onClick={(e) => progressClick(e.target)}
+						className="progress-bar"
+					></div>
 				</div>
 				<div className="container">
 					<button onClick={clickHandler} className="handle left-handle">
