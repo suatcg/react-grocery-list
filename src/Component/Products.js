@@ -6,7 +6,15 @@ import throttle from '../utils/throttle';
 
 const Products = () => {
 	useEffect(() => {
-		document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
+		// console.log('progress-bar-initial mount');
+
+		function progressBarforceCalc() {
+			document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
+		}
+
+		progressBarforceCalc();
+
+		// return () => console.log('progress-bar unmount');
 	}, []);
 
 	useLayoutEffect(() => {
@@ -16,7 +24,6 @@ const Products = () => {
 		// Attach the event listener to the window object
 		window.addEventListener('resize', handleResize);
 
-		// setTimeout(() => handleResize(), 250);
 		handleResize();
 
 		// Remove the event listener when the component unmounts
@@ -25,26 +32,22 @@ const Products = () => {
 		};
 	}, []);
 
-	const handleClick = useCallback((...args) => {
-		const [handle, progressBar, slider] = args;
-
-		onHandleClick(handle, progressBar, slider);
-	}, []);
-
-	const clickHandler = (e) => {
+	const clickHandler = (item) => {
 		let handle;
 
-		if (e.target.matches('.handle')) {
-			handle = e.target;
-		} else if (e.target.matches('.text')) {
-			handle = e.target.closest('.handle');
+		if (item.matches('.handle')) {
+			handle = item;
+		} else if (item.matches('.text')) {
+			handle = item.closest('.handle');
 		} else return;
 
 		if (handle) {
 			const progressBar = handle.closest('.row').querySelector('.progress-bar');
 			const slider = handle.closest('.container').querySelector('.slider');
-			handleClick(handle, progressBar, slider);
-			e.stopPropagation();
+			onHandleClick(handle, progressBar, slider);
+
+			// handleClick(handle, progressBar, slider);
+			// e.stopPropagation();
 		}
 	};
 
@@ -75,7 +78,10 @@ const Products = () => {
 					></div>
 				</div>
 				<div className="container">
-					<button onClick={clickHandler} className="handle left-handle">
+					<button
+						onClick={(e) => clickHandler(e.target)}
+						className="handle left-handle"
+					>
 						<div className="text">&#8249;</div>
 					</button>
 					<div className="slider">
@@ -92,10 +98,11 @@ const Products = () => {
 						<img src="https://via.placeholder.com/270/00FF00?text=11" />
 						<img src="https://via.placeholder.com/280/00FF00?text=12" />
 					</div>
-					<button onClick={clickHandler} className="handle right-handle">
-						<div onClick={clickHandler} className="text">
-							&#8250;
-						</div>
+					<button
+						onClick={(e) => clickHandler(e.target)}
+						className="handle right-handle"
+					>
+						<div className="text">&#8250;</div>
 					</button>
 				</div>
 			</div>

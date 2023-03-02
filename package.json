@@ -23,9 +23,20 @@
 		"autoprefixer": "^10.4.13",
 		"babel-loader": "^9.1.2",
 		"css-loader": "^6.7.3",
+		"eslint": "^8.35.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-jest": "^27.2.1",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
 		"html-webpack-plugin": "^5.5.0",
 		"mini-css-extract-plugin": "^2.7.2",
 		"postcss-loader": "^7.0.2",
+		"prettier": "^2.8.4",
+		"react-hooks": "^1.0.1",
 		"style-loader": "^3.3.1",
 		"webpack": "^5.75.0",
 		"webpack-bundle-analyzer": "^4.8.0",
@@ -36,6 +47,10 @@
 	"dependencies": {
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-icons": "^4.7.1"
+		"react-icons": "^4.7.1",
+		"react-redux": "^8.0.5",
+		"redux": "^4.2.1",
+		"redux-devtools-extension": "^2.13.9",
+		"redux-saga": "^1.2.2"
 	}
 }

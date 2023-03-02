@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
+import React, { useCallback, useState } from 'react';
 import Categories from './Categories';
+import Lists from './Lists';
 import Products from './Products';
+import { useDispatch } from 'react-redux';
+import { getCategoryFetch } from '../store/actions';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -22,38 +24,33 @@ const Content = () => {
 		},
 	]);
 
-	const lists = useMemo(
-		() => (
-			<ul>
-				{items.map((item) => (
-					<li className="item" key={item.id}>
-						<input
-							type="checkbox"
-							onChange={() => handleClick(item.id)}
-							checked={item.checked}
-						/>
-						<label>{item.item}</label>
-						<FaTrashAlt role="button" tabIndex="0" />
-					</li>
-				))}
-			</ul>
-		),
+	const dispath = useDispatch();
+
+	const handleClick = useCallback(
+		(id) => {
+			const listItems = items.map((item) => {
+				return item.id === id ? { ...item, checked: !item.checked } : item;
+			});
+			setitems(listItems);
+		},
 		[items]
 	);
 
-	const handleClick = (id) => {
-		const listItems = items.map((item) => {
-			return item.id === id ? { ...item, checked: !item.checked } : item;
-		});
+	const categorySelect = useCallback((e) => {
+		let category;
 
-		setitems(listItems);
-	};
+		if (e.target.matches('.category-items')) {
+			category = e.target.innerText.toLowerCase();
+			console.log(category);
+			dispath(getCategoryFetch(category));
+		}
+	}, []);
 
 	return (
 		<main>
-			<Categories />
+			<Categories categorySelect={categorySelect} />
 			<Products />
-			{lists}
+			<Lists items={items} handleClick={handleClick} />
 		</main>
 	);
 };
