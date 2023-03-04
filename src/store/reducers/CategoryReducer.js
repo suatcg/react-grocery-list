@@ -1,6 +1,6 @@
 import { GET_CATEGORY_SUCCESS, GET_CATEGORY_FAIL } from '../actions';
 
-export const getCategoryReducer = (state = { category: 'Bakery' }, action) => {
+export const getCategoryReducer = (state = { category: {} }, action) => {
 	switch (action.type) {
 		case GET_CATEGORY_SUCCESS:
 			return {

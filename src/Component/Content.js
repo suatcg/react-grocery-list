@@ -2,8 +2,8 @@ import React, { useCallback, useState } from 'react';
 import Categories from './Categories';
 import Lists from './Lists';
 import Products from './Products';
-import { useDispatch } from 'react-redux';
 import { getCategoryFetch } from '../store/actions';
+import { useDispatch } from 'react-redux';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -40,7 +40,7 @@ const Content = () => {
 		let category;
 
 		if (e.target.matches('.category-items')) {
-			category = e.target.innerText.toLowerCase();
+			category = e.target.innerText;
 			console.log(category);
 			dispath(getCategoryFetch(category));
 		}
