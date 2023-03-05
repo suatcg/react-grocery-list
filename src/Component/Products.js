@@ -4,7 +4,7 @@ import onHandleClick from '../utils/Handle';
 import calculateProgressBar from '../utils/ProgressBarCalc';
 import throttle from '../utils/throttle';
 
-const Products = () => {
+const Products = ({ categoryState }) => {
 	useEffect(() => {
 		// console.log('progress-bar-initial mount');
 
@@ -66,6 +66,8 @@ const Products = () => {
 
 		slider.style.setProperty('--slider-index', index);
 	};
+
+	console.log('Category states: ', categoryState);
 
 	return (
 		<div className="product-container">

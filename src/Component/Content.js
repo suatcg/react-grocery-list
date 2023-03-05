@@ -3,7 +3,7 @@ import Categories from './Categories';
 import Lists from './Lists';
 import Products from './Products';
 import { getCategoryFetch } from '../store/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -26,6 +26,9 @@ const Content = () => {
 
 	const dispath = useDispatch();
 
+	const categoryState = useSelector((state) => state.category);
+	const wholeState = useSelector((state) => state);
+
 	const handleClick = useCallback(
 		(id) => {
 			const listItems = items.map((item) => {
@@ -41,15 +44,15 @@ const Content = () => {
 
 		if (e.target.matches('.category-items')) {
 			category = e.target.innerText;
-			console.log(category);
 			dispath(getCategoryFetch(category));
+			console.log(wholeState);
 		}
 	}, []);
 
 	return (
 		<main>
 			<Categories categorySelect={categorySelect} />
-			<Products />
+			<Products categoryState={categoryState} />
 			<Lists items={items} handleClick={handleClick} />
 		</main>
 	);

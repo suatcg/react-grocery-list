@@ -1,23 +1,23 @@
 import {
-	GET_CATEGORY,
+	LOAD_CATEGORY,
 	GET_CATEGORY_FAIL,
 	GET_CATEGORY_SUCCESS,
 } from '../actions';
 
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import axios from 'axios';
-
 const categoryFetch = async (category) => {
-	try {
-		const res = await axios(` http://localhost:3500/categories:`);
+	const res = await fetch(`http://localhost:3500/categories:`);
 
-		const data = await res.json();
-
-		return data[`${category}`];
-	} catch (err) {
-		return Error(err.message);
+	if (!res.ok) {
+		throw new Error('Something went wrong');
 	}
+
+	const data = await res.json();
+
+	console.log(data[`${category}`]);
+
+	return data[`${category}`];
 };
 
 function* getCategory(action) {
@@ -30,5 +30,5 @@ function* getCategory(action) {
 }
 
 export default function* mySagaCategory() {
-	yield takeLatest(GET_CATEGORY, getCategory);
+	yield takeLatest(LOAD_CATEGORY, getCategory);
 }
