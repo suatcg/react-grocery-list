@@ -3,8 +3,17 @@ import './Product.css';
 import onHandleClick from '../utils/Handle';
 import calculateProgressBar from '../utils/ProgressBarCalc';
 import throttle from '../utils/throttle';
+import { useSelector } from 'react-redux';
 
-const Products = ({ categoryState }) => {
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import ProductConatiner from './ProductConatiner';
+
+const Products = () => {
+	const { category, err, loading } = useSelector(
+		(state) => state.getCategoryReducer
+	);
+
 	useEffect(() => {
 		// console.log('progress-bar-initial mount');
 
@@ -67,7 +76,11 @@ const Products = ({ categoryState }) => {
 		slider.style.setProperty('--slider-index', index);
 	};
 
-	console.log('Category states: ', categoryState);
+	let skeleton;
+
+	if (loading) {
+		skeleton = <Skeleton count={10}></Skeleton>;
+	}
 
 	return (
 		<div className="product-container">
@@ -79,7 +92,8 @@ const Products = ({ categoryState }) => {
 						className="progress-bar"
 					></div>
 				</div>
-				<div className="container">
+				<ProductConatiner category={category} err={err} loading={loading} />
+				{/* <div className="container">
 					<button
 						onClick={(e) => clickHandler(e.target)}
 						className="handle left-handle"
@@ -106,7 +120,7 @@ const Products = ({ categoryState }) => {
 					>
 						<div className="text">&#8250;</div>
 					</button>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

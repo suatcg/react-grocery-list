@@ -6,7 +6,7 @@ import {
 
 export const getCategoryReducer = (
 	state = {
-		category: {},
+		category: [],
 		loading: false,
 		err: '',
 	},

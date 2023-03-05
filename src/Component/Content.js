@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Categories from './Categories';
 import Lists from './Lists';
 import Products from './Products';
 import { getCategoryFetch } from '../store/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -26,8 +26,11 @@ const Content = () => {
 
 	const dispath = useDispatch();
 
-	const categoryState = useSelector((state) => state.category);
-	const wholeState = useSelector((state) => state);
+	useEffect(() => {
+		dispath(getCategoryFetch('Bakery'));
+	}, []);
+
+	// const categoryState = useSelector((state) => state.category);
 
 	const handleClick = useCallback(
 		(id) => {
@@ -45,14 +48,13 @@ const Content = () => {
 		if (e.target.matches('.category-items')) {
 			category = e.target.innerText;
 			dispath(getCategoryFetch(category));
-			console.log(wholeState);
 		}
 	}, []);
 
 	return (
 		<main>
 			<Categories categorySelect={categorySelect} />
-			<Products categoryState={categoryState} />
+			<Products />
 			<Lists items={items} handleClick={handleClick} />
 		</main>
 	);
