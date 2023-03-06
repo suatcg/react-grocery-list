@@ -3,16 +3,19 @@ import './Product.css';
 import onHandleClick from '../utils/Handle';
 import calculateProgressBar from '../utils/ProgressBarCalc';
 import throttle from '../utils/throttle';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import ProductConatiner from './ProductConatiner';
+import { getCategoryFetch } from '../store/actions';
 
 const Products = () => {
 	const { category, err, loading } = useSelector(
 		(state) => state.getCategoryReducer
 	);
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		// console.log('progress-bar-initial mount');
@@ -21,10 +24,14 @@ const Products = () => {
 			document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
 		}
 
+		// dispatch(getCategoryFetch('Bakery'));
+
 		progressBarforceCalc();
 
 		// return () => console.log('progress-bar unmount');
 	}, []);
+
+	// useLayoutEffect(() => {}, [window.addEventListener('')]);
 
 	useLayoutEffect(() => {
 		function handleResize() {
@@ -41,7 +48,7 @@ const Products = () => {
 		};
 	}, []);
 
-	const clickHandler = (item) => {
+	const clickHandler = useCallback((item) => {
 		let handle;
 
 		if (item.matches('.handle')) {
@@ -58,7 +65,7 @@ const Products = () => {
 			// handleClick(handle, progressBar, slider);
 			// e.stopPropagation();
 		}
-	};
+	}, []);
 
 	const progressClick = (actualBar, index = 0) => {
 		document.querySelectorAll('.progress-item').forEach((barItem, idx) => {
@@ -92,7 +99,12 @@ const Products = () => {
 						className="progress-bar"
 					></div>
 				</div>
-				<ProductConatiner category={category} err={err} loading={loading} />
+				<ProductConatiner
+					category={category}
+					err={err}
+					loading={loading}
+					clickHandler={clickHandler}
+				/>
 				{/* <div className="container">
 					<button
 						onClick={(e) => clickHandler(e.target)}

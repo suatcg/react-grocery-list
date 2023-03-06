@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { useDispatch } from 'react-redux';
+import { getCategoryFetch } from '../store/actions';
 
-const ProductConatiner = ({ category, err, loading }) => {
+const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 	console.log(category, err, loading);
+
+	const dispatch = useDispatch();
 
 	if (loading) {
 		return (
@@ -42,7 +46,7 @@ const ProductConatiner = ({ category, err, loading }) => {
 			</button>
 			<div className="slider">
 				{category.map((el) => {
-					<img src={el.url} alt={el.name} />;
+					return <img key={el.id} src={el.url} alt={el.name} />;
 				})}
 			</div>
 			<button

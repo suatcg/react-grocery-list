@@ -15,8 +15,6 @@ const categoryFetch = async (category) => {
 
 	const data = await res.json();
 
-	console.log(data[`${category}`]);
-
 	return data[`${category}`];
 };
 

@@ -6,7 +6,32 @@ import {
 
 export const getCategoryReducer = (
 	state = {
-		category: [],
+		category: [
+			{
+				id: '1',
+				name: 'bread',
+				url: 'https://via.placeholder.com/210/00FF00?text=1',
+				alt: 'bread',
+			},
+			{
+				id: '2',
+				name: 'croissant',
+				url: 'https://via.placeholder.com/220/00FF00?text=2',
+				alt: 'sdfalksdjflkasjdfk',
+			},
+			{
+				id: '3',
+				name: 'birthday-cake',
+				url: 'https://via.placeholder.com/230/00FF00?text=3',
+				alt: 'sdfalksdjflkasjdfk',
+			},
+			{
+				id: '4',
+				name: 'cheesecake',
+				url: 'https://via.placeholder.com/240/00FF00?text=4',
+				alt: 'sdfalksdjflkasjdfk',
+			},
+		],
 		loading: false,
 		err: '',
 	},

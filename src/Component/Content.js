@@ -26,9 +26,9 @@ const Content = () => {
 
 	const dispath = useDispatch();
 
-	useEffect(() => {
-		dispath(getCategoryFetch('Bakery'));
-	}, []);
+	// useEffect(() => {
+	// 	dispath(getCategoryFetch('Bakery'));
+	// }, []);
 
 	// const categoryState = useSelector((state) => state.category);
 
