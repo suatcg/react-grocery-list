@@ -24,6 +24,8 @@ const Content = () => {
 		},
 	]);
 
+	const [categoryName, SetCategoryName] = useState('Bakery');
+
 	const dispath = useDispatch();
 
 	// useEffect(() => {
@@ -43,18 +45,16 @@ const Content = () => {
 	);
 
 	const categorySelect = useCallback((e) => {
-		let category;
-
 		if (e.target.matches('.category-items')) {
-			category = e.target.innerText;
-			dispath(getCategoryFetch(category));
+			SetCategoryName(e.target.innerText);
+			dispath(getCategoryFetch(categoryName));
 		}
 	}, []);
 
 	return (
 		<main>
 			<Categories categorySelect={categorySelect} />
-			<Products />
+			<Products categoryName={categoryName} />
 			<Lists items={items} handleClick={handleClick} />
 		</main>
 	);

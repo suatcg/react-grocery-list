@@ -23,11 +23,23 @@
 	transition: transform 250ms ease-in-out;
 }
 
-.slider > img {
+/* .slider > img {
 	flex: 0 0 calc(100% / var(--items-per-screen));
 	max-width: calc(100% / var(--items-per-screen));
 	aspect-ratio: 16 / 9;
 	padding: var(--img-gap);
+	border-radius: 1rem;
+} */
+
+.slider > span {
+	display: block;
+	flex: 0 0 calc(100% / var(--items-per-screen));
+	max-width: calc(100% / var(--items-per-screen));
+	padding: var(--img-gap);
+}
+
+.slider > span > img {
+	/* aspect-ratio: 16 / 9; */
 	border-radius: 1rem;
 }
 
@@ -82,13 +94,15 @@
 }
 
 .title {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	margin: 0;
 }
 
 .progress-bar {
 	display: flex;
 	gap: 0.25rem;
+	justify-content: center;
+	align-items: center;
 }
 
 .progress-item {
