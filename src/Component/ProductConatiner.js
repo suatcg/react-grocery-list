@@ -12,7 +12,9 @@ const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 				<Skeleton
 					color="grey"
 					highlightColor="#AAA"
-					className="handle "
+					className="handle skeleton"
+					// duration={2.5}
+					// height="55"
 				></Skeleton>
 			</SkeletonTheme>
 		);
@@ -46,7 +48,7 @@ const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 					delayMethod="throttle"
 					useIntersectionObserver={true}
 					threshold={500}
-					effect="blur"
+					effect="opacity"
 					key={el.id}
 					src={el.url}
 					alt={el.name}

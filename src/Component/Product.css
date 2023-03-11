@@ -1,5 +1,6 @@
 :root {
-	--handle-size: 3rem;
+	/* --handle-size: 3rem; */
+	--handle-size: 1rem;
 	--img-gap: 0.25rem;
 }
 
@@ -14,7 +15,7 @@
 }
 
 .slider {
-	--items-per-screen: 4;
+	--items-per-screen: 2;
 	--slider-index: 0;
 	display: flex;
 	flex-grow: 1;
@@ -23,13 +24,13 @@
 	transition: transform 250ms ease-in-out;
 }
 
-/* .slider > img {
+.slider > img {
 	flex: 0 0 calc(100% / var(--items-per-screen));
 	max-width: calc(100% / var(--items-per-screen));
 	aspect-ratio: 16 / 9;
 	padding: var(--img-gap);
 	border-radius: 1rem;
-} */
+}
 
 .slider > span {
 	display: block;
@@ -39,7 +40,8 @@
 }
 
 .slider > span > img {
-	/* aspect-ratio: 16 / 9; */
+	width: 100%;
+	max-width: 100%;
 	border-radius: 1rem;
 }
 
@@ -79,6 +81,7 @@
 }
 
 .text {
+	font-size: 2rem;
 	transition: transform 150ms ease-in-out;
 }
 
@@ -90,11 +93,11 @@
 .header {
 	display: flex;
 	justify-content: space-between;
-	padding: 0.5rem calc(var(--img-gap) * 2 + var(--handle-size));
+	/* padding: 0.5rem calc(var(--img-gap) * 2 + var(--handle-size)); */
 }
 
 .title {
-	font-size: 1.5rem;
+	font-size: 1rem;
 	margin: 0;
 }
 
@@ -106,9 +109,13 @@
 }
 
 .progress-item {
-	flex: 0 0 1.5rem;
-	min-width: 1.5rem;
+	/* flex: 0 0 1.5rem; */
+	flex: 0 0 1rem;
+	/* min-width: 1.5rem; */
+	min-width: 1rem;
+	/* height: 0.5rem; */
 	height: 0.5rem;
+	border-radius: var(--handle-size);
 	background-color: #77777777;
 	transition: all 0.3s ease-in-out;
 }
@@ -123,14 +130,86 @@
 	background-color: rgb(17, 70, 49);
 }
 
-@media (max-width: 100px) {
+.skeleton {
+	height: 4.5rem;
+}
+/* @media (mim-width: 375px) {
 	.slider {
-		--items-per-screen: 3;
+		--items-per-screen: 2;
+	}
+	.skeleton {
+		height: 5rem;
+	}
+} */
+
+/* @media (min-width: 321px) and (max-width: 424px) {
+	.skeleton {
+		height: 5rem;
+	}
+} */
+
+@media (min-width: 425px) {
+	.slider {
+		--items-per-screen: 2;
 	}
 }
 
-@media (max-width: 760px) {
+@media (min-width: 426px) and (max-width: 768px) {
 	.slider {
-		--items-per-screen: 2;
+		--items-per-screen: 3;
+	}
+
+	.skeleton {
+		height: 6rem;
+	}
+
+	.handle {
+		width: 2.2rem;
+	}
+
+	.title {
+		font-size: 1.5rem;
+	}
+
+	.progress-item {
+		flex: 0 0 1.5rem;
+		min-width: 1.5rem;
+		height: 0.75rem;
+	}
+
+	.skeleton {
+		height: 7rem;
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+	.skeleton {
+		height: 9rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.handle {
+		width: 2.2rem;
+	}
+
+	.title {
+		font-size: 2rem;
+	}
+
+	.progress-item {
+		flex: 0 0 2rem;
+		min-width: 2rem;
+		height: 0.75rem;
+	}
+
+	.skeleton {
+		height: 10rem;
+	}
+}
+
+@media (min-width: 1440px) {
+	.slider {
+		--items-per-screen: 5;
 	}
 }

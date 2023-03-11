@@ -124,17 +124,26 @@ ul {
 	width: 100%;
 	list-style: none;
 	padding: 0 0.25rem 0.25rem;
+	margin: 1rem 0 0 0;
 }
 
 ul li::before {
 	content: '\200B';
 }
 
-.item {
+/* .item {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	padding: 0.5rem 0 0.5rem 0.5rem;
+	margin: 0.25rem 0;
+	background-color: #eee;
+} */
+.item {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.25rem 0 0.25rem 0.25rem;
 	margin: 0.25rem 0;
 	background-color: #eee;
 }
@@ -143,7 +152,7 @@ ul li::before {
 	margin: 0;
 }
 
-.item input[type='checkbox'] {
+/* .item input[type='checkbox'] {
 	text-align: center;
 	width: 2.5rem;
 	width: 48px;
@@ -153,22 +162,44 @@ ul li::before {
 	min-height: 48px;
 	cursor: pointer;
 	margin-right: 0.5rem;
+} */
+
+.item input[type='checkbox'] {
+	text-align: center;
+	width: 24px;
+	min-width: 24px;
+	height: 24px;
+	min-height: 24px;
+	cursor: pointer;
+	margin-right: 0.5rem;
 }
 
 .item input[type='checkbox']:focus + label {
 	text-decoration: underline;
 }
 
+/* .item > label {
+	font-size: 0.75rem;
+	flex-grow: 1;
+} */
 .item > label {
 	font-size: 0.75rem;
 	flex-grow: 1;
 }
 
-.item svg {
+/* .item svg {
 	width: 48px;
 	min-width: 48px;
 	height: 36px;
 	font-size: 1rem;
+	color: steelblue;
+	cursor: pointer;
+} */
+.item svg {
+	width: 24px;
+	min-width: 24px;
+	height: 18px;
+	font-size: 0.5rem;
 	color: steelblue;
 	cursor: pointer;
 }
@@ -238,4 +269,27 @@ ul li::before {
 	right: 0;
 	top: 0;
 	bottom: 0;
+}
+
+@media (min-width: 768px) {
+	.item input[type='checkbox'] {
+		width: 2.5rem;
+		width: 48px;
+		min-width: 48px;
+		height: 2.5rem;
+	}
+
+	.item > label {
+		font-size: 1rem;
+	}
+
+	.list-container {
+		width: 82%;
+	}
+
+	.item svg {
+		width: 48px;
+		min-width: 48px;
+		height: 36px;
+	}
 }

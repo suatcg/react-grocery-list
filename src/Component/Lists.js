@@ -3,7 +3,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 
 const Lists = ({ items, handleClick }) => {
 	return (
-		<ul>
+		<ul className="list-container">
 			{items.map((item) => (
 				<li className="item" key={item.id}>
 					<input

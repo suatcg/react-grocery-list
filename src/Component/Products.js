@@ -85,7 +85,7 @@ const Products = ({ categoryName }) => {
 		<div className="product-container">
 			<div className="row">
 				<div className="header">
-					<h3 className="title">{categoryName}</h3>
+					<h4 className="title">{categoryName}</h4>
 					<div
 						onClick={(e) => progressClick(e.target)}
 						className="progress-bar"
