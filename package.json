@@ -11,7 +11,8 @@
 		"dev": "npm run webpack-dev-server -- --env mode=development --hot",
 		"prod:analyze": "npm run prod -- --env presets=analyze",
 		"prod:debug:": "npm run debug -- --env mode=production",
-		"dev:debug": "npm run debug -- -- env mode=development"
+		"dev:debug": "npm run debug -- -- env mode=development",
+		"json-server": "json-server public/data/db.json --watch --port 3500"
 	},
 	"keywords": [],
 	"author": "suatcangeyik",

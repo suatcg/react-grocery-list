@@ -24,22 +24,22 @@
 	transition: transform 250ms ease-in-out;
 }
 
-.slider > img {
+/* .slider > img {
 	flex: 0 0 calc(100% / var(--items-per-screen));
 	max-width: calc(100% / var(--items-per-screen));
 	aspect-ratio: 16 / 9;
 	padding: var(--img-gap);
 	border-radius: 1rem;
-}
+} */
 
-.slider > span {
+.slider > div {
 	display: block;
 	flex: 0 0 calc(100% / var(--items-per-screen));
 	max-width: calc(100% / var(--items-per-screen));
 	padding: var(--img-gap);
 }
 
-.slider > span > img {
+.slider > div > img {
 	width: 100%;
 	max-width: 100%;
 	border-radius: 1rem;
@@ -110,9 +110,9 @@
 
 .progress-item {
 	/* flex: 0 0 1.5rem; */
-	flex: 0 0 1rem;
+	flex: 0 0 0.5rem;
 	/* min-width: 1.5rem; */
-	min-width: 1rem;
+	min-width: 0.5rem;
 	/* height: 0.5rem; */
 	height: 0.5rem;
 	border-radius: var(--handle-size);
