@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Categories from './Categories';
 import Lists from './Lists';
 import Products from './Products';
@@ -46,8 +46,9 @@ const Content = () => {
 
 	const categorySelect = useCallback((e) => {
 		if (e.target.matches('.category-items')) {
-			SetCategoryName(e.target.innerText);
-			dispath(getCategoryFetch(categoryName));
+			const categoryText = e.target.innerText;
+			SetCategoryName(categoryText);
+			dispath(getCategoryFetch(categoryText));
 		}
 	}, []);
 

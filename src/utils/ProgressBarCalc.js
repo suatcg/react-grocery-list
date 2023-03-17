@@ -18,6 +18,7 @@ export default function calculateProgressBar(progressBar) {
 	for (let i = 0; i < progressBarItemCount; i++) {
 		const barItem = document.createElement('div');
 		barItem.classList.add('progress-item');
+		// barItem.style.display = 'none';
 		if (i === sliderIndex) {
 			barItem.classList.add('active');
 		}

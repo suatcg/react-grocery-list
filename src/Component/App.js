@@ -7,6 +7,7 @@ import Footer from './Footer';
 import { WindowContextProvider } from '../context/WindowContextProvider';
 import { Provider } from 'react-redux';
 import { store } from '../store/Store';
+// import { storeProduct } from '../../storeRTK/store';
 
 const App = () => {
 	return (

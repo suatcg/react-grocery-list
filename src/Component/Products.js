@@ -16,22 +16,18 @@ const Products = ({ categoryName }) => {
 	);
 
 	useEffect(() => {
-		// console.log('progress-bar-initial mount');
-
 		function progressBarforceCalc() {
-			document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
+			if (document.querySelectorAll('.progress-bar')) {
+				document
+					.querySelectorAll('.progress-bar')
+					.forEach(calculateProgressBar);
+			}
 		}
 
-		// dispatch(getCategoryFetch('Bakery'));
-
 		progressBarforceCalc();
-
-		// return () => console.log('progress-bar unmount');
 	}, [category]);
 
-	// useLayoutEffect(() => {}, [window.addEventListener('')]);
-
-	useLayoutEffect(() => {
+	useEffect(() => {
 		function handleResize() {
 			document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
 		}
@@ -59,9 +55,6 @@ const Products = ({ categoryName }) => {
 			const progressBar = handle.closest('.row').querySelector('.progress-bar');
 			const slider = handle.closest('.container').querySelector('.slider');
 			onHandleClick(handle, progressBar, slider);
-
-			// handleClick(handle, progressBar, slider);
-			// e.stopPropagation();
 		}
 	}, []);
 

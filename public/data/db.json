@@ -5,79 +5,79 @@
 				"id": "1",
 				"name": "bread",
 				"url": "https://via.placeholder.com/210/00FF00?text=1",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "2",
 				"name": "croissant",
 				"url": "https://via.placeholder.com/220/00FF00?text=2",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "3",
 				"name": "birthday-cake",
 				"url": "https://via.placeholder.com/230/00FF00?text=3",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "4",
 				"name": "cheesecake",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "5",
 				"name": "pretzel",
 				"url": "https://via.placeholder.com/240/00FF00?text=5",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "6",
 				"name": "wafel",
 				"url": "https://via.placeholder.com/240/00FF00?text=6",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "7",
 				"name": "swiss-roll",
 				"url": "https://via.placeholder.com/240/00FF00?text=7",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "8",
 				"name": "doughnut",
 				"url": "https://via.placeholder.com/240/00FF00?text=8",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "9",
 				"name": "wheat-bread",
 				"url": "https://via.placeholder.com/240/00FF00?text=8",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "10",
 				"name": "hamburger-bread",
 				"url": "https://via.placeholder.com/240/00FF00?text=8",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "11",
 				"name": "wheat-bread",
 				"url": "https://via.placeholder.com/240/00FF00?text=8",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "12",
 				"name": "whole-grain-bread",
 				"url": "https://via.placeholder.com/240/00FF00?text=8",
-				"type": "quantity"
+				"quantity": "piece"
 			},
 			{
 				"id": "13",
 				"name": "baguette",
 				"url": "https://via.placeholder.com/240/00FF00?text=8",
-				"type": "quantity"
+				"quantity": "piece"
 			}
 		],
 		"Vegetables": [
@@ -85,49 +85,49 @@
 				"id": "1",
 				"name": "tomato",
 				"url": "https://via.placeholder.com/210/00FF00?text=1",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "2",
 				"name": "cucumber",
 				"url": "https://via.placeholder.com/220/00FF00?text=2",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "3",
 				"name": "blueberry",
 				"url": "https://via.placeholder.com/230/00FF00?text=3",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "4",
 				"name": "orange",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "5",
 				"name": "strawberry",
 				"url": "https://via.placeholder.com/210/00FF00?text=5",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "6",
 				"name": "watermelon",
 				"url": "https://via.placeholder.com/220/00FF00?text=6",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "7",
 				"name": "kiwi",
 				"url": "https://via.placeholder.com/230/00FF00?text=7",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "8",
 				"name": "apricot",
 				"url": "https://via.placeholder.com/240/00FF00?text=8",
-				"type": "kg"
+				"quantity": "kg"
 			}
 		],
 		"Meats": [
@@ -135,68 +135,68 @@
 				"id": "1",
 				"name": "fish",
 				"url": "https://via.placeholder.com/210/00FF00?text=1",
-				"type": "kg"
+				"quantity": "kg"
 			},
 
 			{
 				"id": "2",
 				"name": "cow",
 				"url": "https://via.placeholder.com/220/00FF00?text=2",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "3",
 				"name": "chicken",
 				"url": "https://via.placeholder.com/230/00FF00?text=3",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "4",
 				"name": "shrimp",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "5",
 				"name": "ground-beef",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "6",
 				"name": "bacon",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "7",
 				"name": "sausage",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "8",
 				"name": "butter",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "9",
 				"name": "cream",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "10",
 				"name": "eggs",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			},
 			{
 				"id": "11",
 				"name": "milk",
 				"url": "https://via.placeholder.com/240/00FF00?text=4",
-				"type": "kg"
+				"quantity": "kg"
 			}
 		]
 	}

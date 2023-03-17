@@ -1,14 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import {
-	LazyLoadImage,
-	LazyLoadComponent,
-} from 'react-lazy-load-image-component';
-import './ProductContainer.css';
+
+import ImageContainer from './ImageContainer';
 
 const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 	if (loading) {
-		document.querySelector('.progress-item').style.display = 'none';
+		document.querySelector('.progress-bar').style.display = 'none';
+
 		return (
 			<SkeletonTheme className="container">
 				<Skeleton
@@ -23,86 +21,84 @@ const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 	}
 
 	if (err.length > 0) {
-		document.querySelector('.progress-item').style.display = 'none';
+		document.querySelector('.progress-bar').style.display = 'none';
+
 		return (
-			<h1
-				style={{
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-					color: 'red',
-				}}
-			>
-				{err + ' reload the page'}
-			</h1>
+			<div className="slider">
+				<h1
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						color: 'red',
+					}}
+				>
+					{err + ' reload the page'}
+				</h1>
+			</div>
 		);
 	}
 
 	useEffect(() => {
-		document.querySelector('.progress-item').style.display = 'block';
+		// document.querySelector('.progress-item').style.display = 'block';
+		document.querySelector('.progress-bar').style.display = 'flex';
 	}, []);
 
-	function quantityHandler() {
-		console.log('quantityHandler');
+	if (category) {
+		return (
+			<div className="container">
+				<button
+					onClick={(e) => clickHandler(e.target)}
+					className="handle left-handle"
+				>
+					<div className="text">&#8249;</div>
+				</button>
+				{/* <div className="slider">{Images}</div> */}
+				<div className="slider">
+					<ImageContainer category={category} />
+				</div>
+				{/* <div className="inputs">{quantityItems} </div> */}
+				<button
+					onClick={(e) => clickHandler(e.target)}
+					className="handle right-handle"
+				>
+					<div className="text">&#8250;</div>
+				</button>
+			</div>
+		);
 	}
 
-	const [valInput, setInputValue] = useState(1.2);
+	// const [valInput, setInputValue] = useState(1.2);
 
-	const Images = useMemo(() => {
-		return category.map((el, idx) => {
-			return (
-				<div className="image-container" key={idx}>
-					<LazyLoadImage
-						delayTime={250}
-						delayMethod="throttle"
-						useIntersectionObserver={true}
-						threshold={500}
-						// effect="opacity"
-						// key={el.id}
-						src={el.url}
-						alt={el.name}
-					/>
+	// const Images = useMemo(() => {
+	// 	return category.map((el, idx) => {
+	// 		return (
+	// 			<div className="image-container" key={idx}>
+	// 				<LazyLoadImage
+	// 					delayTime={250}
+	// 					delayMethod="throttle"
+	// 					useIntersectionObserver={true}
+	// 					threshold={500}
+	// 					// effect="opacity"
+	// 					// key={el.id}
+	// 					src={el.url}
+	// 					alt={el.name}
+	// 				/>
 
-					<div className="image-label">
-						<button className="quantity-button decrease">&#8722;</button>
-						<div
-							className="image-input"
-							// onChange={quantityHandler}
-							// type="number"
-							// step={0.1}
+	// 				<div className="image-label">
+	// 					<button className="quantity-button decrease">&#8722;</button>
+	// 					<div className="image-input">
+	// 						<span className="image-text">{1.2}</span>
+	// 					</div>
+	// 					<button className="quantity-button increase">&#43;</button>
+	// 					{/* <p className="image-text">kg</p> */}
+	// 				</div>
 
-							// defaultValue={1}
-						>
-							<span className="image-text">{valInput}</span>
-						</div>
-						<button className="quantity-button increase">&#43;</button>
-						{/* <p className="image-text">kg</p> */}
-					</div>
-
-					<button className="add-button">Add</button>
-				</div>
-			);
-		});
-	}, [category]);
-
-	return (
-		<div className="container">
-			<button
-				onClick={(e) => clickHandler(e.target)}
-				className="handle left-handle"
-			>
-				<div className="text">&#8249;</div>
-			</button>
-			<div className="slider">{Images}</div>
-			{/* <div className="inputs">{quantityItems} </div> */}
-			<button
-				onClick={(e) => clickHandler(e.target)}
-				className="handle right-handle"
-			>
-				<div className="text">&#8250;</div>
-			</button>
-		</div>
-	);
+	// 				<button className="add-button">Add</button>
+	// 			</div>
+	// 		);
+	// 	});
+	// }, [category]);
 };
 
 export default ProductConatiner;
