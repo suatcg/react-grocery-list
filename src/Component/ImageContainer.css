@@ -40,6 +40,21 @@ div.image-container {
 	border-radius: 5px;
 	background: rgb(132 237 195);
 } */
+.image-name {
+	position: absolute;
+	font-size: 0.4rem;
+	font-weight: 600;
+	color: #130804;
+	text-decoration: underline;
+	/* background-color: #b26767; */
+	background-color: #ff7e7e;
+	text-transform: capitalize;
+	top: 30%;
+	left: 10%;
+	border: 1px solid black;
+	border-radius: 3px;
+	box-shadow: -2px 2px 0px rgb(255 255 255 / 0.7);
+}
 
 .image-label {
 	position: absolute;
@@ -123,9 +138,8 @@ input::-webkit-inner-spin-button {
 	position: absolute;
 	top: 5.4%;
 	right: 6%;
-	border: 1px solid black;
 	border: none;
-	background: #b26767;
+	background: #ff7e7e;
 	font-family: inherit;
 	font-size: 0.6rem;
 	border-bottom-left-radius: 5px;
@@ -137,6 +151,8 @@ input::-webkit-inner-spin-button {
 .add-button:hover,
 .add-button:active {
 	transform: scale(1.1);
+	text-decoration: underline;
+	background: #ff7e7e;
 }
 
 .add-button:focus {
@@ -175,4 +191,135 @@ input::-webkit-inner-spin-button {
 
 button:focus {
 	outline: none;
+}
+
+@media (min-width: 425px) {
+	.add-button {
+		top: 4.4%;
+		right: 4%;
+	}
+	.image-label {
+		top: 75%;
+		left: 29%;
+	}
+
+	.image-input {
+		width: 4rem;
+		height: 0.9rem;
+	}
+
+	.image-name {
+		font-size: 0.6rem;
+	}
+
+	.quantity-button {
+		font-size: 15px;
+	}
+}
+
+@media (min-width: 768px) {
+	.add-button {
+		font-size: 0.9rem;
+		top: 3%;
+		right: 3.2%;
+	}
+
+	.image-label {
+		top: 75%;
+		left: 29%;
+	}
+
+	.image-input {
+		width: 5rem;
+		height: 1rem;
+	}
+
+	.image-text {
+		font-size: 0.6rem;
+	}
+
+	.image-name {
+		font-size: 0.7rem;
+		padding: 0 0.25rem;
+	}
+
+	.quantity-button {
+		font-size: 15px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.add-button {
+		font-size: 1.2rem;
+		top: 2.1%;
+		right: 2.7%;
+	}
+
+	.image-label {
+		width: 6.5rem;
+		top: 75%;
+		left: 29%;
+	}
+
+	.image-input {
+		width: 9rem;
+		height: 1.8rem;
+	}
+
+	.image-text {
+		font-size: 1.1rem;
+	}
+
+	.image-name {
+		font-size: 0.7rem;
+		padding: 0 0.25rem;
+	}
+
+	.quantity-button {
+		font-size: 32px;
+	}
+}
+
+@media (min-width: 1440px) {
+	.image-label {
+		top: 70%;
+		left: 19%;
+	}
+
+	.image-name {
+		font-size: 0.9rem;
+		padding: 0 0.45rem;
+	}
+}
+
+@media (min-width: 1920px) {
+	.add-button {
+		font-size: 1.4rem;
+		top: 1.5%;
+		right: 1.7%;
+	}
+
+	.image-label {
+		width: 8rem;
+		top: 70%;
+		left: 19%;
+	}
+
+	.image-input {
+		width: 14.2rem;
+		height: 1.9rem;
+	}
+
+	.image-text {
+		font-size: 1.3rem;
+	}
+
+	.image-name {
+		font-size: 0.9rem;
+		padding: 0 0.45rem;
+	}
+
+	.quantity-button {
+		font-size: 35px;
+	}
 }

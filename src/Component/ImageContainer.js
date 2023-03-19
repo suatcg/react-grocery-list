@@ -32,9 +32,13 @@ const ImageContainer = ({ category }) => {
 			.closest('div.image-label')
 			.querySelector('.image-text');
 
-		quantity === 'kg'
-			? (inputEl.value = parseFloat(inputEl.value) - 0.5)
-			: (inputEl.value = parseInt(inputEl.value) - 1);
+		if (quantity === 'piece' && inputEl.value - 1 !== 0) {
+			inputEl.value = parseInt(inputEl.value) - 1;
+		}
+
+		if (quantity === 'kg' && inputEl.value - 0.5 !== 0) {
+			inputEl.value = parseFloat(inputEl.value) - 0.5;
+		}
 	};
 
 	const addToList = (element) => {
@@ -78,6 +82,7 @@ const ImageContainer = ({ category }) => {
 					src={el.url}
 					alt={el.name}
 				/>
+				<span className="image-name">{el.name}</span>
 
 				<div className="image-label">
 					<button
