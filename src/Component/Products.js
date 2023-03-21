@@ -1,46 +1,54 @@
-import React, { useCallback, useEffect, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import './Product.css';
 import onHandleClick from '../utils/Handle';
 import calculateProgressBar from '../utils/ProgressBarCalc';
-import throttle from '../utils/throttle';
 import { useSelector } from 'react-redux';
 
-import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import ProductConatiner from './ProductConatiner';
-import { getCategoryFetch } from '../store/actions';
+import { selectAllCategory } from '../../storeRTK/categorySlice';
 
 const Products = ({ categoryName }) => {
-	const { category, err, loading } = useSelector(
-		(state) => state.getCategoryReducer
-	);
+	const { category, status, error } = useSelector(selectAllCategory);
 
 	useEffect(() => {
-		function progressBarforceCalc() {
-			if (document.querySelectorAll('.progress-bar')) {
+		if (status === 'succeeded') {
+			function progressBarforceCalc() {
+				if (document.querySelectorAll('.progress-bar')) {
+					document.querySelector('.progress-bar').style.display = 'flex';
+
+					document
+						.querySelectorAll('.progress-bar')
+						.forEach(calculateProgressBar);
+				}
+			}
+
+			progressBarforceCalc();
+		}
+
+		if (status === 'failed' || status === 'loading') {
+			document.querySelector('.progress-bar').style.display = 'none';
+		}
+	}, [status]);
+
+	useEffect(() => {
+		if (status === 'succeeded') {
+			function handleResize() {
 				document
 					.querySelectorAll('.progress-bar')
 					.forEach(calculateProgressBar);
 			}
+			// Attach the event listener to the window object
+			window.addEventListener('resize', handleResize);
+
+			handleResize();
+
+			// Remove the event listener when the component unmounts
+			return () => {
+				window.removeEventListener('resize', handleResize);
+			};
 		}
-
-		progressBarforceCalc();
-	}, [category]);
-
-	useEffect(() => {
-		function handleResize() {
-			document.querySelectorAll('.progress-bar').forEach(calculateProgressBar);
-		}
-		// Attach the event listener to the window object
-		window.addEventListener('resize', handleResize);
-
-		handleResize();
-
-		// Remove the event listener when the component unmounts
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, [category]);
+	}, [status]);
 
 	const clickHandler = useCallback((item) => {
 		let handle;
@@ -86,38 +94,10 @@ const Products = ({ categoryName }) => {
 				</div>
 				<ProductConatiner
 					category={category}
-					err={err}
-					loading={loading}
+					error={error}
+					status={status}
 					clickHandler={clickHandler}
 				/>
-				{/* <div className="container">
-					<button
-						onClick={(e) => clickHandler(e.target)}
-						className="handle left-handle"
-					>
-						<div className="text">&#8249;</div>
-					</button>
-					<div className="slider">
-						<img src="https://via.placeholder.com/210/00FF00?text=1" />
-						<img src="https://via.placeholder.com/220/00FF00?text=2" />
-						<img src="https://via.placeholder.com/230/00FF00?text=3" />
-						<img src="https://via.placeholder.com/240/00FF00?text=4" />
-						<img src="https://via.placeholder.com/250/00FF00?text=5" />
-						<img src="https://via.placeholder.com/260/00FF00?text=6" />
-						<img src="https://via.placeholder.com/270/00FF00?text=7" />
-						<img src="https://via.placeholder.com/280/00FF00?text=8" />
-						<img src="https://via.placeholder.com/250/00FF00?text=9" />
-						<img src="https://via.placeholder.com/260/00FF00?text=10" />
-						<img src="https://via.placeholder.com/270/00FF00?text=11" />
-						<img src="https://via.placeholder.com/280/00FF00?text=12" />
-					</div>
-					<button
-						onClick={(e) => clickHandler(e.target)}
-						className="handle right-handle"
-					>
-						<div className="text">&#8250;</div>
-					</button>
-				</div> */}
 			</div>
 		</div>
 	);

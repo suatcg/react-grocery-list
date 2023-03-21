@@ -3,10 +3,8 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 import ImageContainer from './ImageContainer';
 
-const ProductConatiner = ({ category, err, loading, clickHandler }) => {
-	if (loading) {
-		document.querySelector('.progress-bar').style.display = 'none';
-
+const ProductConatiner = ({ category, error, status, clickHandler }) => {
+	if (status === 'loading') {
 		return (
 			<SkeletonTheme className="container">
 				<Skeleton
@@ -20,9 +18,7 @@ const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 		);
 	}
 
-	if (err.length > 0) {
-		document.querySelector('.progress-bar').style.display = 'none';
-
+	if (status === 'failed') {
 		return (
 			<div className="slider">
 				<h1
@@ -33,18 +29,13 @@ const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 						color: 'red',
 					}}
 				>
-					{err + ' reload the page'}
+					{error + ' reload the page'}
 				</h1>
 			</div>
 		);
 	}
 
-	useEffect(() => {
-		// document.querySelector('.progress-item').style.display = 'block';
-		document.querySelector('.progress-bar').style.display = 'flex';
-	}, []);
-
-	if (category) {
+	if (status === 'succeeded') {
 		return (
 			<div className="container">
 				<button
@@ -53,11 +44,9 @@ const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 				>
 					<div className="text">&#8249;</div>
 				</button>
-				{/* <div className="slider">{Images}</div> */}
 				<div className="slider">
 					<ImageContainer category={category} />
 				</div>
-				{/* <div className="inputs">{quantityItems} </div> */}
 				<button
 					onClick={(e) => clickHandler(e.target)}
 					className="handle right-handle"
@@ -67,38 +56,6 @@ const ProductConatiner = ({ category, err, loading, clickHandler }) => {
 			</div>
 		);
 	}
-
-	// const [valInput, setInputValue] = useState(1.2);
-
-	// const Images = useMemo(() => {
-	// 	return category.map((el, idx) => {
-	// 		return (
-	// 			<div className="image-container" key={idx}>
-	// 				<LazyLoadImage
-	// 					delayTime={250}
-	// 					delayMethod="throttle"
-	// 					useIntersectionObserver={true}
-	// 					threshold={500}
-	// 					// effect="opacity"
-	// 					// key={el.id}
-	// 					src={el.url}
-	// 					alt={el.name}
-	// 				/>
-
-	// 				<div className="image-label">
-	// 					<button className="quantity-button decrease">&#8722;</button>
-	// 					<div className="image-input">
-	// 						<span className="image-text">{1.2}</span>
-	// 					</div>
-	// 					<button className="quantity-button increase">&#43;</button>
-	// 					{/* <p className="image-text">kg</p> */}
-	// 				</div>
-
-	// 				<button className="add-button">Add</button>
-	// 			</div>
-	// 		);
-	// 	});
-	// }, [category]);
 };
 
 export default ProductConatiner;

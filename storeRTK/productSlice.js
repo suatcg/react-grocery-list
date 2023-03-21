@@ -21,29 +21,10 @@ export const productSlice = createSlice({
 				state.push(action.payload);
 			}
 		},
-
-		increment: (state, action) => {
-			// find index of product according to the given name
-			const productIndex = state.findIndex((el) => el.name === action.name);
-
-			// Update Product quantity according to it's type
-			state[productIndex].type === 'kg'
-				? (state[productIndex].quantity += 0.1)
-				: (state[productIndex].quantity += 1);
-		},
-		decrement: (state) => {
-			// find index of product according to the given name
-			const productIndex = state.findIndex((el) => el.name === action.name);
-
-			// Update Product quantity according to it's type
-			state[productIndex].type === 'kg'
-				? (state[productIndex].quantity -= 0.1)
-				: (state[productIndex].quantity -= 1);
-		},
 	},
 });
 
-export const { createProduct, increment, decrement } = productSlice.actions;
+export const { createProduct } = productSlice.actions;
 
 export const selectProduct = (state) => state.productReducer;
 

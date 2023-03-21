@@ -2,20 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-	createProduct,
-	increment,
-	decrement,
-	selectProduct,
-} from '../../storeRTK/productSlice';
+import { createProduct } from '../../storeRTK/productSlice';
 
 import './ImageContainer.css';
 
 const ImageContainer = ({ category }) => {
 	const dispatch = useDispatch();
 
-	const products = useSelector(selectProduct);
-	console.log(products);
+	// const products = useSelector(selectProduct);
 
 	const incrementHandler = (e, quantity) => {
 		const inputEl = e.target
@@ -49,7 +43,7 @@ const ImageContainer = ({ category }) => {
 		const productName = product.querySelector('img').alt;
 
 		// Get the Product quantity amount
-		const productQuantity = product.querySelector('.image-text').value;
+		const productQuantity = Number(product.querySelector('.image-text').value);
 
 		// Get the Product quantity type
 		const quantityType = product
@@ -57,6 +51,7 @@ const ImageContainer = ({ category }) => {
 			.getAttribute('quantitytype');
 
 		// Crate new Product via dispatch the CreateProduct action
+		debugger;
 		dispatch(
 			createProduct({
 				name: productName,
@@ -67,9 +62,6 @@ const ImageContainer = ({ category }) => {
 	};
 
 	return category.map((el, idx) => {
-		// const product = products.find((product) => product.name == el.name);
-		// // console.log(product);
-
 		return (
 			<div className="image-container" key={idx}>
 				<LazyLoadImage
@@ -91,9 +83,6 @@ const ImageContainer = ({ category }) => {
 					>
 						&#8722;
 					</button>
-					{/* <div className="image-input">
-						<span className="image-text">{quantity}</span>
-					</div> */}
 
 					<label className="image-input">
 						<input
@@ -106,13 +95,10 @@ const ImageContainer = ({ category }) => {
 					</label>
 					<button
 						className="quantity-button increase"
-						// onClick={() => dispatch(increment())}
-						// onClick={() => setQuantity(quantity + 1)}
 						onClick={(e) => incrementHandler(e, el.quantity)}
 					>
 						&#43;
 					</button>
-					{/* <p className="image-text">kg</p> */}
 				</div>
 
 				<button onClick={(e) => addToList(e.target)} className="add-button">

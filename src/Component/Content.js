@@ -4,6 +4,7 @@ import Lists from './Lists';
 import Products from './Products';
 import { getCategoryFetch } from '../store/actions';
 import { useDispatch } from 'react-redux';
+import { fetchCategory } from '../../storeRTK/categorySlice';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -48,7 +49,8 @@ const Content = () => {
 		if (e.target.matches('.category-items')) {
 			const categoryText = e.target.innerText;
 			SetCategoryName(categoryText);
-			dispath(getCategoryFetch(categoryText));
+			// dispath(getCategoryFetch(categoryText));
+			dispath(fetchCategory(categoryText));
 		}
 	}, []);
 
