@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -6,7 +6,7 @@ import { createProduct } from '../../storeRTK/productSlice';
 
 import './ImageContainer.css';
 
-const ImageContainer = ({ category }) => {
+const ImageContainer = ({ category, categoryName }) => {
 	const dispatch = useDispatch();
 
 	// const products = useSelector(selectProduct);
@@ -51,7 +51,7 @@ const ImageContainer = ({ category }) => {
 			.getAttribute('quantitytype');
 
 		// Crate new Product via dispatch the CreateProduct action
-		debugger;
+
 		dispatch(
 			createProduct({
 				name: productName,
@@ -61,7 +61,7 @@ const ImageContainer = ({ category }) => {
 		);
 	};
 
-	return category.map((el, idx) => {
+	return category[`${categoryName}`].map((el, idx) => {
 		return (
 			<div className="image-container" key={idx}>
 				<LazyLoadImage

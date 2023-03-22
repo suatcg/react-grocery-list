@@ -3,10 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 export const productSlice = createSlice({
 	name: 'product',
 	initialState: [
-		// name: {
-		// 	type: 'kg',
-		// 	quantity: 1,
-		// },
 		{
 			name: 'none',
 			type: 'kg',
@@ -15,10 +11,14 @@ export const productSlice = createSlice({
 	],
 	reducers: {
 		createProduct: (state, action) => {
-			const hasObject = state.some((el) => el.name === action.payload.name);
+			const productIndex = state.findIndex(
+				(el) => el.name === action.payload.name
+			);
 
-			if (!hasObject) {
-				state.push(action.payload);
+			if (productIndex < 0) {
+				state.unshift(action.payload);
+			} else {
+				state[productIndex].quantity += action.payload.quantity;
 			}
 		},
 	},

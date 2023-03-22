@@ -10,7 +10,8 @@ import { Provider } from 'react-redux';
 import { store } from '../../storeRTK/store';
 import { fetchCategory } from '../../storeRTK/categorySlice';
 
-store.dispatch(fetchCategory('Bakery'));
+// store.dispatch(fetchCategory('Bakery'));
+store.dispatch(fetchCategory());
 
 const App = () => {
 	return (

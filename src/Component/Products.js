@@ -94,6 +94,7 @@ const Products = ({ categoryName }) => {
 				</div>
 				<ProductConatiner
 					category={category}
+					categoryName={categoryName}
 					error={error}
 					status={status}
 					clickHandler={clickHandler}

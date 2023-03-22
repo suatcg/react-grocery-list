@@ -3,7 +3,13 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 import ImageContainer from './ImageContainer';
 
-const ProductConatiner = ({ category, error, status, clickHandler }) => {
+const ProductConatiner = ({
+	category,
+	categoryName,
+	error,
+	status,
+	clickHandler,
+}) => {
 	if (status === 'loading') {
 		return (
 			<SkeletonTheme className="container">
@@ -45,7 +51,7 @@ const ProductConatiner = ({ category, error, status, clickHandler }) => {
 					<div className="text">&#8249;</div>
 				</button>
 				<div className="slider">
-					<ImageContainer category={category} />
+					<ImageContainer category={category} categoryName={categoryName} />
 				</div>
 				<button
 					onClick={(e) => clickHandler(e.target)}
