@@ -184,7 +184,7 @@ ul li::before {
 } */
 .item > label {
 	font-size: 0.75rem;
-	flex-grow: 1;
+	flex-grow: 5;
 }
 
 /* .item svg {
@@ -292,4 +292,11 @@ ul li::before {
 		min-width: 48px;
 		height: 36px;
 	}
+}
+
+.date {
+	font-size: 0.4rem !important;
+	width: max-content;
+	align-self: flex-end;
+	margin-right: 0.5rem;
 }

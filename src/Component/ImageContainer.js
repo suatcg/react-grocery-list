@@ -2,14 +2,18 @@ import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createProduct } from '../../storeRTK/productSlice';
+import {
+	createProduct,
+	selectProduct,
+	updateProduct,
+} from '../../storeRTK/productSlice';
 
 import './ImageContainer.css';
 
 const ImageContainer = ({ category, categoryName }) => {
 	const dispatch = useDispatch();
 
-	// const products = useSelector(selectProduct);
+	const products = useSelector(selectProduct);
 
 	const incrementHandler = (e, quantity) => {
 		const inputEl = e.target
@@ -50,15 +54,20 @@ const ImageContainer = ({ category, categoryName }) => {
 			.querySelector('.image-text')
 			.getAttribute('quantitytype');
 
-		// Crate new Product via dispatch the CreateProduct action
+		// If element is already exist then call the update action else create a new product via dispatch the createProduct action
 
-		dispatch(
-			createProduct({
-				name: productName,
-				type: quantityType,
-				quantity: productQuantity,
-			})
+		const productExist = products.find(
+			(product) => product.name === productName
 		);
+
+		if (productExist) {
+			// Update the existing product
+			console.log(`Product ${productName} already exists`);
+			dispatch(updateProduct({ name: productName, quantity: productQuantity }));
+		} else {
+			// Crate new Product via dispatch the CreateProduct action
+			dispatch(createProduct(productName, quantityType, productQuantity));
+		}
 	};
 
 	return category[`${categoryName}`].map((el, idx) => {

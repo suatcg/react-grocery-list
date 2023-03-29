@@ -2,9 +2,9 @@ import React, { useCallback, useState } from 'react';
 import Categories from './Categories';
 import Lists from './Lists';
 import Products from './Products';
-import { getCategoryFetch } from '../store/actions';
-import { useDispatch } from 'react-redux';
 import { fetchCategory } from '../../storeRTK/categorySlice';
+import { selectProduct } from '../../storeRTK/productSlice';
+import { useSelector } from 'react-redux';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -25,9 +25,9 @@ const Content = () => {
 		},
 	]);
 
-	const [categoryName, SetCategoryName] = useState('Bakery');
+	const products = useSelector(selectProduct);
 
-	const dispath = useDispatch();
+	const [categoryName, SetCategoryName] = useState('Bakery');
 
 	// useEffect(() => {
 	// 	dispath(getCategoryFetch('Bakery'));
@@ -58,7 +58,7 @@ const Content = () => {
 		<main>
 			<Categories categorySelect={categorySelect} />
 			<Products categoryName={categoryName} />
-			<Lists items={items} handleClick={handleClick} />
+			<Lists items={products} handleClick={handleClick} />
 		</main>
 	);
 };
