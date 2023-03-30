@@ -4,7 +4,7 @@ import Lists from './Lists';
 import Products from './Products';
 import { fetchCategory } from '../../storeRTK/categorySlice';
 import { selectProduct } from '../../storeRTK/productSlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -26,6 +26,7 @@ const Content = () => {
 	]);
 
 	const products = useSelector(selectProduct);
+	const dispatch = useDispatch();
 
 	const [categoryName, SetCategoryName] = useState('Bakery');
 
@@ -50,7 +51,7 @@ const Content = () => {
 			const categoryText = e.target.innerText;
 			SetCategoryName(categoryText);
 			// dispath(getCategoryFetch(categoryText));
-			dispath(fetchCategory(categoryText));
+			dispatch(fetchCategory(categoryText));
 		}
 	}, []);
 

@@ -271,6 +271,24 @@ ul li::before {
 	bottom: 0;
 }
 
+/* List Container */
+/* .list-container {
+	position: relative;
+}
+
+.list-container::after {
+	content: 'Remove';
+	position: absolute;
+	display: flex;
+	justify-content: center;
+
+	width: 5rem;
+	height: 2rem;
+	top: -1rem;
+	right: 1rem;
+	border: 1px solid black;
+} */
+
 @media (min-width: 768px) {
 	.item input[type='checkbox'] {
 		width: 2.5rem;
