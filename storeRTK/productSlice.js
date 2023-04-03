@@ -59,6 +59,13 @@ export const productSlice = createSlice({
 			state[productIndex].quantity += action.payload.quantity;
 			state[productIndex].date = new Date().toISOString();
 		},
+		updateCheck: (state, action) => {
+			const product = state.find((product) => {
+				return product.id === action.payload;
+			});
+
+			product.checked = !product.checked;
+		},
 		removeProduct: (state, action) => {
 			const productIndex = state.findIndex((el) => el.name === action.payload);
 			state.splice(productIndex, 1);
@@ -73,6 +80,7 @@ export const productSlice = createSlice({
 export const {
 	createProduct,
 	updateProduct,
+	updateCheck,
 	removeProduct,
 	sortProduct,
 	removeAllProducts,

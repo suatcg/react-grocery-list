@@ -31,25 +31,32 @@ const Lists = ({ items, handleClick }) => {
 				</button>
 			</div>
 			<ul className="list-container">
-				{items.map((item) => (
-					<li className="item" key={item.id}>
-						<input
-							type="checkbox"
-							onChange={() => handleClick(item.id)}
-							checked={item.checked}
-						/>
-						{/* <label>{item.name}</label> */}
-						<label
-							style={item.checked ? { textDecoration: 'line-through' } : null}
-						>{`${item.quantity} ${item.type} -  ${item.name}`}</label>
-						<TimeAgo timestamp={item.date} />
-						<FaTrashAlt
-							onClick={() => dispatch(removeProduct(item.id))}
-							role="button"
-							tabIndex="0"
-						/>
-					</li>
-				))}
+				{items.length ? (
+					items.map((item) => (
+						<li className="item" key={item.id}>
+							<input
+								type="checkbox"
+								onChange={() => handleClick(item.id)}
+								checked={item.checked}
+							/>
+							{/* <label>{item.name}</label> */}
+							<label
+								onDoubleClick={() => handleClick(item.id)}
+								style={item.checked ? { textDecoration: 'line-through' } : null}
+							>{`${item.quantity} ${item.type} -  ${item.name}`}</label>
+							<TimeAgo timestamp={item.date} />
+							<FaTrashAlt
+								onClick={() => dispatch(removeProduct(item.id))}
+								role="button"
+								tabIndex="0"
+							/>
+						</li>
+					))
+				) : (
+					<p style={{ marginTop: '2rem', textAlign: 'center' }}>
+						Your List is empty{' '}
+					</p>
+				)}
 			</ul>
 		</>
 	);

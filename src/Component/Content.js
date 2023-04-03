@@ -5,6 +5,7 @@ import Products from './Products';
 import { fetchCategory } from '../../storeRTK/categorySlice';
 import { selectProduct } from '../../storeRTK/productSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { updateCheck } from '../../storeRTK/productSlice';
 
 const Content = () => {
 	const [items, setitems] = useState([
@@ -36,15 +37,19 @@ const Content = () => {
 
 	// const categoryState = useSelector((state) => state.category);
 
-	const handleClick = useCallback(
-		(id) => {
-			const listItems = items.map((item) => {
-				return item.id === id ? { ...item, checked: !item.checked } : item;
-			});
-			setitems(listItems);
-		},
-		[items]
-	);
+	// const handleClick = useCallback(
+	// 	(id) => {
+	// 		const listItems = items.map((item) => {
+	// 			return item.id === id ? { ...item, checked: !item.checked } : item;
+	// 		});
+	// 		setitems(listItems);
+	// 	},
+	// 	[items]
+	// );
+
+	const handleClick = (id) => {
+		dispatch(updateCheck(id));
+	};
 
 	const categorySelect = useCallback((e) => {
 		if (e.target.matches('.category-items')) {
