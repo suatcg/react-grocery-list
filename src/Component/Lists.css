@@ -1,7 +1,8 @@
 .product-info {
-	width: 80%;
+	width: 90%;
 	display: flex;
 	align-items: center;
+	margin-top: 0.5rem;
 }
 
 .product-info--title {
@@ -40,6 +41,12 @@
 
 .remove-button:hover {
 	transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+	.product-info {
+		width: 80%;
+	}
 }
 
 @media (min-width: 768px) {
